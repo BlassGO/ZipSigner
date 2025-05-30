@@ -1,0 +1,36 @@
+plugins {
+    id 'application'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation fileTree(dir: '../libs', include: ['*.jar'])
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(8)
+    }
+}
+
+application {
+    mainClass = 'com.topjohnwu.utils.ZipSigner'
+}
+
+jar {
+    archiveBaseName = 'zipsigner'
+    archiveVersion = '1.0'
+    manifest {
+        attributes 'Main-Class': 'com.topjohnwu.utils.ZipSigner'
+    }
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+    
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    
+    exclude 'META-INF/*.DSA', 'META-INF/*.SF', 'META-INF/*.RSA' 
+}
