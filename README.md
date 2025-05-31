@@ -1,9 +1,11 @@
 # 📦ZipSigner
 
-**ZipSigner** is an open-source Java command-line tool for signing Android APKs and JAR files.
+**ZipSigner** is an open-source tool for signing Android APKs and JAR files.
 - Extracted from the signing utilities in old [Magisk](https://github.com/topjohnwu/Magisk) versions. 
+- With Bouncy Castle 1.80
 
-- Built for JDK 8+ with Bouncy Castle 1.80
+## Require
+- [JDK 8+](https://www.oracle.com/java/technologies/downloads/)
 
 ## Build
 
@@ -12,6 +14,7 @@ Using Gradle to build the executable JAR:
 ```bash
 ./gradlew jar
 ```
+**Output:** app/build/libs/zipsigner-*.jar
 
 ## Usage
 
